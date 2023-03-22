@@ -28,7 +28,13 @@ public class Main {
 	    ql.xoaPTGTCuaNSX("Honda");
 	    System.out.println("----------------------------------------");
 	    
+	    System.out.println("NSX co nhieu xe nhat dang duoc quan ly: " + ql.nhaSXCoNhieuXeNhat());
+	    System.out.println("---------------------------");
+	    
 	    ql.sapXepPTGTTheoSoXeGiamDan();
+	    
+	    System.out.println("---------------------------");
+	    ql.thongKe();
 	    
 	    
 	}

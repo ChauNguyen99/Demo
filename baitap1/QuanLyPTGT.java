@@ -1,6 +1,7 @@
 package vn.sunasterisk.finalproject.baitap1;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -55,6 +56,25 @@ private List<Vehicle> vehicles;
     	}
     }
     
+    // Yeu cau 5 - Cho biet NSX nao co nhieu xe nhat dang duoc quan ly 
+    public String nhaSXCoNhieuXeNhat() {
+    	HashMap<String, Integer> manufacturers = new HashMap<String, Integer>();
+    	for (Vehicle vehicle : vehicles) {
+    		String manufacturer = vehicle.getNhaSanXuat();
+    		int count = manufacturers.getOrDefault(manufacturer, 0);
+    		manufacturers.put(manufacturer, count + 1);
+    	}
+    	int maxCount = 0;
+        String maxManufacturer = null;
+    	for (String manufacturer : manufacturers.keySet()) {
+		  if (manufacturers.get(manufacturer) > maxCount) {
+              maxCount = manufacturers.get(manufacturer);
+              maxManufacturer = manufacturer;
+          }
+		}
+    	return maxManufacturer + " voi " + maxCount + " xe";
+    }
+    
     // Yeu cau 6 - Sap xep cac PTGT theo so xe giam dan
     public void sapXepPTGTTheoSoXeGiamDan() {
         Collections.sort(vehicles);
@@ -63,6 +83,20 @@ private List<Vehicle> vehicles;
         for (Vehicle vehicle : vehicles) {
         	System.out.println(vehicle.getSoXe());
     	}
+    }
+    
+    // Yeu cau 7 - Thong ke
+    public void thongKe() {
+    	HashMap<String, Integer> statisticsVehicle = new HashMap<String, Integer>();
+    	for (Vehicle vehicle : vehicles) {
+    		String type = vehicle.getClass().getSimpleName();
+    		int count = statisticsVehicle.getOrDefault(type, 0);
+    		statisticsVehicle.put(type, count + 1);
+    	}
+    	System.out.println("Thong ke so xe ma moi loai phuong tien dang quan ly: ");
+    	for (String type : statisticsVehicle.keySet()) {
+		  System.out.println(type + " - " + statisticsVehicle.get(type));
+		}
     }
     
 }
